@@ -8,7 +8,7 @@ export default function Contact() {
           backgroundImage: `url(${backGround})`,
           backgroundSize: "cover",
           backgroundPosition: "center",
-          height: "697px",
+          height: "100%",
           width: "360px",
         }}>
       <div>
@@ -27,7 +27,46 @@ export default function Contact() {
         </div>
       </div>
       <img src={steps} alt="" />
-      <h6 style={{color:"white",fontSize:"10px"}} className="d-flex justify-content-end p-3 ">כדאי לבדוק שוב שהפרטים נכונים </h6>
+      <h4 style={{color:"white",fontSize:"15px"}} className="d-flex justify-content-end p-3 ">כדאי לבדוק שוב שהפרטים נכונים </h4>
+      <form>
+        <div className="d-flex flex-column align-items-end p-2">
+          <h6 style={{color:"white"}} >שם פרטי</h6>
+          <input style={{backgroundColor:"#3A3E40",width:"100%",borderRadius:"8px",height:"30px"}} type="text" />
+        </div>
+        <div className="d-flex flex-column align-items-end p-2">
+          <h6 style={{color:"white"}}>שם משפחה </h6>
+          <input style={{backgroundColor:"#3A3E40",width:"100%",borderRadius:"8px",height:"30px"}} type="text"  type="text" />
+        </div>
+        <div className="d-flex flex-column align-items-end p-2">
+          <h6 style={{color:"white"}}>תעודת זהות</h6>
+          <input style={{backgroundColor:"#3A3E40",width:"100%",borderRadius:"8px",height:"30px"}} type="text"  type="text" />
+        </div>
+        <div className="d-flex flex-column align-items-end p-2">
+          <h6 style={{color:"white"}}>תאריך לידה </h6>
+          <input style={{backgroundColor:"#3A3E40",width:"100%",borderRadius:"8px",height:"30px"}} type="text"  type="date" />
+        </div>
+        <div className="d-flex flex-column align-items-end p-2">
+          <h6 style={{color:"white"}}>מספר טלפון </h6>
+          <input style={{backgroundColor:"#3A3E40",width:"100%",borderRadius:"8px",height:"30px"}} type="text"  type="tel" />
+        </div>
+        <div className="d-flex flex-column align-items-end p-2">
+          <h6 style={{color:"white"}}>כתובת מייל </h6>
+          <input style={{backgroundColor:"#3A3E40",width:"100%",borderRadius:"8px",height:"30px"}} type="text"  type="email" />
+        </div>
+        <div className="d-flex flex-column align-items-end p-2">
+          <h6 style={{color:"white"}}>עיר מגורים </h6>
+          <input style={{backgroundColor:"#3A3E40",width:"100%",borderRadius:"8px",height:"30px"}} type="text"  type="text" />
+        </div>
+        <div className="d-flex flex-column align-items-end p-2">
+          <h6 style={{color:"white"}}>רחוב</h6>
+          <input style={{backgroundColor:"#3A3E40",width:"100%",borderRadius:"8px",height:"30px"}} type="text"  type="text" />
+        </div>
+        <div className="d-flex flex-column align-items-end p-2">
+          <h6 style={{color:"white"}}>מספר בית</h6>
+          <input  style={{backgroundColor:"#3A3E40",width:"100%",borderRadius:"8px",height:"30px"}} type="text"  type="text" />
+        </div>
+        
+      </form>  
     </div>
   );
 }
