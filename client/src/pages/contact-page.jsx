@@ -17,7 +17,7 @@ export default function Contact() {
           height: "100%",
           width: "360px",
         }}>
-      <div>
+
         <div
           className="d-flex align-items-center flex-row justify-content-around"
           dir="rtl"
@@ -31,9 +31,9 @@ export default function Contact() {
             style={{ width: "40px", height: "40px" }}
           />
         </div>
-      </div>
-      <img src={steps} alt="" />
-      <h4 style={{color:"white",fontSize:"15px"}} className="d-flex justify-content-end ">כדאי לבדוק שוב שהפרטים נכונים </h4>
+
+      <img src={steps} alt="" style={{padding:"10px"}} />
+      <h4 style={{color:"white",fontSize:"15px",padding:"10px"}} className="d-flex justify-content-end ">כדאי לבדוק שוב שהפרטים נכונים </h4>
       <form>
         <div className="d-flex flex-column align-items-end p-2">
           <h6 style={{color:"white"}} >שם פרטי</h6>
