@@ -44,8 +44,6 @@ export default function HomePage() {
           <img src={btIcon} alt="" style={{ width: "40px" }} />
         </div>
       </div>
-
-      {/* CARD */}
       <div className="container d-flex justify-content-center mt-5">
         <div
           className="text-center d-flex flex-column align-items-center"
