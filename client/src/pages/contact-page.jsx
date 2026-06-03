@@ -70,11 +70,14 @@ export default function Contact() {
           <h5 style={{color:"white",fontSize:"15px"}}>איך לעדכן פרטים </h5>
           <p style={{color:"white"}}>מייל וכתובת ע"י לחיצה על העיפרון.<br/> שם ,ת.ז תאריך לידה וטלפון ע"י צילום רישיון הנהיגה</p>
         </div>
-        <div dir="rtl" className="d-flex flex-row align-items-end p-2" style={{border:"2px dotted #6A6B70",width:"300px",height:"50px",borderRadius:"20px"}} >
-          <img src={uplIcon} alt=""className="" />
-          <h4 style={{color:"white",fontSize:"15px"}}className="justify-content-between">צילום רישיון נהיגה</h4>
+        <div className="d-flex flex-column align-items-center" style={{gap:"40px",height:"150px"}}>
+          <div dir="rtl" className="d-flex flex-row align-items-end p-2" style={{gap:"20px",border:"2px dotted #6A6B70",width:"300px",height:"50px",borderRadius:"20px"}} >
+            <img src={uplIcon} alt=""className="" />
+            <h4 style={{color:"white",fontSize:"15px"}}>צילום רישיון נהיגה</h4>
+          </div>
+          <button style={{paddingTop:"5px",backgroundColor:"#FF5800",height:"35px",borderRadius:"10px",width:"250px",color:"white"}}> קדימה </button>
         </div>
-        <button style={{backgroundColor:"#FF5800",height:"35px",borderRadius:"10px",width:"250px",color:"white"}}> קדימה </button>
+
       </form>  
     </div>
   );
