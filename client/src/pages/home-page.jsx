@@ -15,7 +15,6 @@ import Group399 from "../assets/logos/Group399.png";
 import { useNavigate } from "react-router-dom";
 
 export default function HomePage() {
-
   return (
     <div
       className="min-vh-100 w-100"
