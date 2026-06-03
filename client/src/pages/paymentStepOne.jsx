@@ -44,7 +44,7 @@ export default function PaymentStepOne(){
                     </div>
 
                     <div className="d-flex flex-row align-items-start" style={{padding:"25px",gap:"1px"}} dir="rtl">
-                        <img src={Beats} alt="" style={{padding:"5px",margin:"1px",marginTop:"-5px"}}/>
+                        <img src={Beats} alt="" style={{margin:"1px",marginTop:"0"}}/>
                         <p style={{color:"white"}}>דניאל אביב, נציג/ת המכירות שלך מקבל עדכונים על כל מה שנעשה כאן, כמובן שתוכל לפנות אליו בכל עת</p>
                     </div>
 
