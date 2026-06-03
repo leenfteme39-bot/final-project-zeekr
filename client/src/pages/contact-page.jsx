@@ -1,9 +1,14 @@
+import { useState } from "react";
 import backGround from "../assets/hero/Vector.png";
 import iconX from "../assets/icons/15755.png";
 import backIcon from "../assets/icons/iconX.png";
 import steps from "../assets/icons/steps.png";
 import uplIcon from "../assets/icons/uplIcon.png";
+import updIcon from "../assets/icons/icon8.png"
 export default function Contact() {
+  const [city,setCity]=useState("");
+  const [street,setStreet]=useState("");
+  const [houseNumber,setHouseNumber]=useState("");
   return (
     <div style={{
           backgroundImage: `url(${backGround})`,
@@ -36,35 +41,55 @@ export default function Contact() {
         </div>
         <div className="d-flex flex-column align-items-end p-2">
           <h6 style={{color:"white"}}>שם משפחה </h6>
-          <input style={{backgroundColor:"#3A3E40",width:"100%",borderRadius:"8px",height:"30px"}} type="text"  type="text" />
+          <input style={{backgroundColor:"#3A3E40",width:"100%",borderRadius:"8px",height:"30px"}}  type="text" />
         </div>
         <div className="d-flex flex-column align-items-end p-2">
           <h6 style={{color:"white"}}>תעודת זהות</h6>
-          <input style={{backgroundColor:"#3A3E40",width:"100%",borderRadius:"8px",height:"30px"}} type="text"  type="text" />
+          <input style={{backgroundColor:"#3A3E40",width:"100%",borderRadius:"8px",height:"30px"}} type="text" />
         </div>
         <div className="d-flex flex-column align-items-end p-2">
           <h6 style={{color:"white"}}>תאריך לידה </h6>
-          <input style={{backgroundColor:"#3A3E40",width:"100%",borderRadius:"8px",height:"30px"}} type="text"  type="date" />
+          <input style={{backgroundColor:"#3A3E40",width:"100%",borderRadius:"8px",height:"30px",color:"white"}}type="date" />
         </div>
         <div className="d-flex flex-column align-items-end p-2">
           <h6 style={{color:"white"}}>מספר טלפון </h6>
-          <input style={{backgroundColor:"#3A3E40",width:"100%",borderRadius:"8px",height:"30px"}} type="text"  type="tel" />
+          <input style={{backgroundColor:"#3A3E40",width:"100%",borderRadius:"8px",height:"30px"}}type="tel" />
         </div>
         <div className="d-flex flex-column align-items-end p-2">
-          <h6 style={{color:"white"}}>כתובת מייל </h6>
-          <input style={{backgroundColor:"#3A3E40",width:"100%",borderRadius:"8px",height:"30px"}} type="text"  type="email" />
+          <h6 style={{ color: "white" }}>כתובת מייל</h6>
+          <div style={{ position: "relative", width: "100%" }}>
+            <input type="email" style={{backgroundColor: "#3A3E40",width: "100%",borderRadius: "8px",height: "30px",border: "none",outline: "none",color: "white",paddingRight: "10px",paddingLeft: "35px"}}/>
+            <img src={updIcon} alt="" style={{position: "absolute",left: "10px",top: "50%",transform: "translateY(-50%)",width: "16px",height: "16px",cursor: "pointer"}}/>
+          </div>
         </div>
+
         <div className="d-flex flex-column align-items-end p-2">
           <h6 style={{color:"white"}}>עיר מגורים </h6>
-          <input style={{backgroundColor:"#3A3E40",width:"100%",borderRadius:"8px",height:"30px"}} type="text"  type="text" />
+          <div style={{backgroundColor:"#3A3E40",width:"100%",borderRadius:"8px",height:"30px"}} type="text" >
+            <select style={{backgroundColor:"#3A3E40",color:"white",width:"95%"}} dir="rtl" className="border-0">
+              <option value=""></option>
+              <option value="באקה אלגרבייה">באקה אלגרבייה</option>
+              <option value="תל אביב">תל אביב</option>
+              <option value="חיפה">חיפה</option>
+              <option value="חדרה">חדרה</option>
+            </select>
+          </div>
         </div>
+
         <div className="d-flex flex-column align-items-end p-2">
-          <h6 style={{color:"white"}}>רחוב</h6>
-          <input style={{backgroundColor:"#3A3E40",width:"100%",borderRadius:"8px",height:"30px"}} type="text"  type="text" />
+          <h6 style={{ color: "white" }}>רחוב</h6>
+          <div style={{ position: "relative", width: "100%" }}>
+            <input type="email" style={{backgroundColor: "#3A3E40",width: "100%",borderRadius: "8px",height: "30px",border: "none",outline: "none",color: "white",paddingRight: "10px",paddingLeft: "35px"}}/>
+            <img src={updIcon} alt="" style={{position: "absolute",left: "10px",top: "50%",transform: "translateY(-50%)",width: "16px",height: "16px",cursor: "pointer"}}/>
+          </div>
         </div>
+
         <div className="d-flex flex-column align-items-end p-2">
-          <h6 style={{color:"white"}}>מספר בית</h6>
-          <input  style={{backgroundColor:"#3A3E40",width:"100%",borderRadius:"8px",height:"30px"}} type="text"  type="text" />
+          <h6 style={{ color: "white" }}>מספר בית </h6>
+          <div style={{ position: "relative", width: "100%" }}>
+            <input type="email" style={{backgroundColor: "#3A3E40",width: "100%",borderRadius: "8px",height: "30px",border: "none",outline: "none",color: "white",paddingRight: "10px",paddingLeft: "35px"}}/>
+            <img src={updIcon} alt="" style={{position: "absolute",left: "10px",top: "50%",transform: "translateY(-50%)",width: "16px",height: "16px",cursor: "pointer"}}/>
+          </div>
         </div>
         <div className="d-flex flex-column align-items-end text-end p-2">
           <h5 style={{color:"white",fontSize:"15px"}}>איך לעדכן פרטים </h5>
