@@ -4,8 +4,9 @@ import backIcon from "../assets/icons/iconX.png";
 import uplIcon from "../assets/icons/uplIcon.png"
 import React from "react";
 import { useState } from "react";
-import closeIcon from "../assets/icons/closeIcon.png"
-import motorsbaam from "../assets/logos/motorsbaam.png"
+import closeIcon from "../assets/icons/closeIcon.png";
+import motorsbaam from "../assets/logos/motorsbaam.png";
+import step2 from "../assets/icons/steps2.png";
 
 export default function PaymentStepTwo(){
     const [file, setFile] = useState(null);
@@ -19,6 +20,7 @@ export default function PaymentStepTwo(){
                 <h3 style={{ color: "white" }}>ביצוע תשלום</h3>
                 <img src={backIcon}alt=""style={{ width: "40px", height: "40px" }}/>
             </div>
+            <img src={step2} alt="" style={{padding:"10px"}}/>
             <div className="d-flex flex-column "style={{padding:"10px",textAlign: "right"}} dir="rtl">
                 <h5 style={{color:"white",fontSize:"15px"}} className="">צירוף אישור תשלום</h5>
                 <h5 style={{color:"white",fontSize:"10px"}}>כאן ניתן להעלות את מסמך העברה בנקאית שביצעת מול הבנק</h5>
