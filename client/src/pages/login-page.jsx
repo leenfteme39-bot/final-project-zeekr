@@ -36,14 +36,16 @@ export default function Login() {
         backgroundImage: `url(${backGround})`,
         backgroundSize: "cover",
         backgroundPosition: "center",
-        height: "697px",
-        width: "360px",
+        minHeight: "100vh",
+        width: "100%",
+        margin:"0 auto",
+        maxWidth:"1200px"
       }}
     >
       <img
         src={carImage}
         alt="carImag"
-        style={{ height: "auto", width: "", objectFit: "cover" }}
+        style={{ height: "auto", width: "100%", objectFit: "cover" }}
       />
       <div className="d-flex justify-content-center align-items-center ">
         <form
@@ -64,7 +66,7 @@ export default function Login() {
                 type="text"
                 value={phone}
                 onChange={(e) => setPhone(e.target.value)}
-                style={{ color:"white",width: "320px",height:"46px", padding: "12px", borderRadius: "10px", backgroundColor:"#3A3E40",borderRadius:"7px" ,paddingLeft:"16px",paddingRight:"24px",paddingTop:"12px",paddingBottom:"12px"}}
+                style={{ color:"white",width: "100%",maxWidth:"320px",height:"46px", padding: "12px", borderRadius: "10px", backgroundColor:"#3A3E40",borderRadius:"7px" ,paddingLeft:"16px",paddingRight:"24px",paddingTop:"12px",paddingBottom:"12px"}}
               />
             </div>
 
@@ -74,12 +76,12 @@ export default function Login() {
                 type="text"
                 value={carNumber}
                 onChange={(e) => setCarNumber(e.target.value)}
-                style={{ color:"white", width: "320px",height:"46px", padding: "12px", backgroundColor:"#3A3E40",borderRadius:"7px" ,paddingLeft:"16px",paddingRight:"24px",paddingTop:"12px",paddingBottom:"12px"}}
+                style={{ color:"white", width: "100%",maxWidth:"320px",height:"46px", padding: "12px", backgroundColor:"#3A3E40",borderRadius:"7px" ,paddingLeft:"16px",paddingRight:"24px",paddingTop:"12px",paddingBottom:"12px"}}
               />
             </div>
-            <div className="d-flex flex-column "style={{padding:"10px",paddingLeft:"60px",width:"236.07px",fontSize:"12px",gap:"2px"}}>
-                <div className="d-flex flex-row align-items-start" style={{width:"236.07px",height:"42px",top:"478px",left:"61px",color:"#A7A9AA"}}>
-                    <p>
+            <div className="d-flex flex-column" style={{width:"100%",maxWidth:"320px",fontSize:"12px",gap:"10px"}}>
+                <div className="d-flex flex-row align-items-start" style={{width:"236.07px",height:"42px",top:"478px",left:"50px",color:"#A7A9AA"}}>
+                    <p style={{margin:"0"}}>
                         ניתן להוסיף לאפליקציה רק רכבים שיובאו ע"י גיאו מוביליטי בע"מ 
                     </p>
                     <img src={iconLayer} alt="iconLayer" style={{width:"13px", height:"13px"}}/>
