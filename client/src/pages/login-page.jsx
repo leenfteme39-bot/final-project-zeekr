@@ -28,37 +28,13 @@ export default function Login() {
   console.log(backGround);
   navigate("/home")
 };
-
-  // html
   return (
-    <div
-      style={{
-        backgroundImage: `url(${backGround})`,
-        backgroundSize: "cover",
-        backgroundPosition: "center",
-        minHeight: "100vh",
-        width: "100%",
-        margin:"0 auto",
-        maxWidth:"1200px"
-      }}
-    >
-      <img
-        src={carImage}
-        alt="carImag"
-        style={{ height: "auto", width: "100%", objectFit: "cover" }}
-      />
+    <div style={{backgroundImage: `url(${backGround})`,backgroundSize: "cover",backgroundPosition: "center",minHeight: "100vh",width: "100%",margin:"0 auto",maxWidth:"1200px"}}>
+      <img src={carImage} alt="carImag" style={{ height: "auto", width: "100%", objectFit: "cover" }}/>
       <div className="d-flex justify-content-center align-items-center ">
         <form
           onSubmit={handleLogin}
-          style={{
-            display: "flex",
-            flexDirection: "column",
-            alignItems: "center",
-            gap: "15px",
-            width: "90%",
-            maxWidth: "400px",
-          }}
-        >
+          style={{display: "flex",flexDirection: "column",alignItems: "center",gap: "15px",width: "90%",maxWidth: "400px",}}>
           <div className="d-flex flex-column gap-3">
             <div className="d-flex flex-column">
               <h6 className="text-white text-end "style={{fontSize:"15px"}} >מספר טלפון נייד</h6>

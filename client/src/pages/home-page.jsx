@@ -17,7 +17,7 @@ import { useNavigate } from "react-router-dom";
 export default function HomePage() {
   return (
     <div
-      className="min-vh-100 w-100 כךקס-בםךוצמ"
+      className="min-vh-100 w-100"
       style={{
         backgroundImage: `url(${backGround})`,
         backgroundSize: "cover",
@@ -34,11 +34,7 @@ export default function HomePage() {
         <div className="container py-4">
           <div className="d-flex justify-content-between align-items-center" dir="rtl">
             <div className="d-flex align-items-center gap-2">
-              <img
-                src=""
-                alt=""
-                style={{ width: "40px", height: "40px", borderRadius: "50%" }}
-              />
+              <img src="" alt="" style={{ width: "40px", height: "40px", borderRadius: "50%" }} />
               <h6 className="text-white m-0">בוקר טוב</h6>
             </div>
 
@@ -62,10 +58,7 @@ export default function HomePage() {
               src={zeekarCar}
               alt=""
               className="img-fluid"
-              style={{
-                maxWidth: "240px",
-                marginTop: "-80px",
-              }}
+              style={{ maxWidth: "240px", marginTop: "-80px" }}
             />
 
             <h5 className="text-white mt-3">ZEEKAR X</h5>
@@ -86,73 +79,56 @@ export default function HomePage() {
           </div>
         </div>
 
-        <div
-          className="d-flex flex-column align-items-center gap-4"
-          style={{ paddingTop: "30px" }}
-        >
+        <div className="d-flex flex-column align-items-center gap-4" style={{ paddingTop: "30px" }}>
           <img src={frameIcon} alt="" style={{ width: "30px" }} />
           <h5 style={{ color: "white" }}>לשירותך</h5>
         </div>
 
         <div className="row pt-4 px-2">
           <div className="col-4 col-md-4">
-            <div
-              className="d-flex flex-column aikgn-items-center justify-content-center gap-2"
-              style={{
-                backgroundColor: "#3A3E40",
-                borderRadius: "20px",
-                height: "150px",
-                alignItems: "center",
-              }}
-            >
+            <div className="d-flex flex-column justify-content-center gap-2"
+              style={{ backgroundColor: "#3A3E40", borderRadius: "20px", height: "150px", alignItems: "center" }}>
               <img src={mapLocation} alt="" style={{ width: "70px" }} />
-              <h6 className="text-white text-center">
-                ניווט לחניון
-                <br />
-                קרוב
-              </h6>
+              <h6 className="text-white text-center">ניווט לחניון<br />קרוב</h6>
             </div>
           </div>
 
           <div className="col-4 col-md-4">
-            <div
-              className="d-flex flex-column align-items-center justify-content-center gap-2"
-              style={{
-                backgroundColor: "#3A3E40",
-                borderRadius: "20px",
-                height: "150px",
-                alignItems: "center",
-              }}
-            >
+            <div className="d-flex flex-column justify-content-center gap-2"
+              style={{ backgroundColor: "#3A3E40", borderRadius: "20px", height: "150px", alignItems: "center" }}>
               <img src={charge} alt="" style={{ width: "70px" }} />
               <h6 className="text-white text-center">נקודות טעינה</h6>
             </div>
           </div>
 
           <div className="col-4 col-md-4">
-            <div
-              className="d-flex flex-column align-items-center justify-content-center gap-2"
-              style={{
-                backgroundColor: "#3A3E40",
-                borderRadius: "20px",
-                height: "150px",
-                alignItems: "center",
-              }}
-            >
+            <div className="d-flex flex-column justify-content-center gap-2"
+              style={{ backgroundColor: "#3A3E40", borderRadius: "20px", height: "150px", alignItems: "center" }}>
               <img src={myZeekar} alt="" style={{ width: "70px" }} />
-              <h6 className="text-white text-center">
-                MY <br /> ZEEKR
-              </h6>
+              <h6 className="text-white text-center">MY <br /> ZEEKR</h6>
             </div>
           </div>
         </div>
       </div>
 
-      <div dir="rtl" className="d-flex flex-column mt-4">
-      <img
-  src={ctaIcon}
-  alt=""
-  style={{width: "70px",marginBottom: "-20px",display: "block",marginInlineStart: "20px"}}/>        <div
+      {/* 🔥 CTA FIXED בצורה נכונה */}
+      <div dir="rtl" className="d-flex flex-column align-items-center mt-4">
+
+        {/* CTA ICON - עכשיו יציב */}
+        <div className="d-flex justify-content-center" style={{ width: "100%" }}>
+          <img
+            src={ctaIcon}
+            alt=""
+            style={{
+              width: "70px",
+              display: "block",
+              transform: "translateY(10px)"
+            }}
+          />
+        </div>
+
+        {/* FOOTER BAR */}
+        <div
           className="d-flex justify-content-between px-3 align-items-center"
           style={{
             backgroundImage: `url(${backlowerSkeleton})`,
@@ -164,17 +140,15 @@ export default function HomePage() {
           }}
         >
           <div className="d-flex align-items-center gap-4 px-2 py-1">
-            <div
-              style={{ backgroundColor: "white", borderRadius: "10px" }}
-              className="d-flex flex-row align-items-start justify-content-between gap-1"
-            >
+            <div style={{ backgroundColor: "white", borderRadius: "10px" }}
+              className="d-flex flex-row align-items-center gap-1">
               <img src={icon2} alt="" style={{ width: "30px" }} />
               <span>ראשי</span>
             </div>
             <img src={icon3} alt="" style={{ width: "30px" }} />
           </div>
 
-          <div className="d-flex flex-row align-items-start justify-content-between gap-5">
+          <div className="d-flex flex-row gap-5">
             <img src={icon4} alt="" style={{ width: "30px" }} />
             <img src={Group399} alt="" style={{ width: "30px" }} />
           </div>

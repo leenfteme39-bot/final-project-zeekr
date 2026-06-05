@@ -131,8 +131,6 @@ export default function CarDetails(){
                             <h6 style={{color:"white",fontWeight:"bold"}}> 7.7 שניות</h6>
                         </div>
                     </div>
-                
-                
                 </div>
             </div>
     );
