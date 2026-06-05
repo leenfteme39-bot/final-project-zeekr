@@ -7,8 +7,13 @@ import { useState } from "react";
 import closeIcon from "../assets/icons/closeIcon.png";
 import motorsbaam from "../assets/logos/motorsbaam.png";
 import step2 from "../assets/icons/steps2.png";
-
+import { useNavigate } from "react-router-dom";
 export default function PaymentStepTwo(){
+    const navigate =useNavigate();
+    const handleLogin=(e)=>{
+        e.preventDefault();
+        navigate("/paymentStepThree")
+    };
     const [file, setFile] = useState(null);
     const handleFileChange = (e) => {
     setFile(e.target.files[0]);
@@ -63,7 +68,7 @@ export default function PaymentStepTwo(){
             </div>
                 <h5 style={{gap:"10px",color:"white",fontSize:"13px", textAlign: "right",padding:"25px"}} dir="rtl">*העברה בנקאית מתעדכנת עד 4 ימי עסקים מרגע שליחת האסמכתא</h5>
                 <div className="d-flex justify-content-center">
-                    <button className="btn btn-primary" style={{backgroundColor:"#FF5800",color:"white",width:"197px",height:"35px",borderRadius:"15px",marginTop:"10px"}}>קדימה</button>               
+                    <button onClick={handleLogin} className="btn btn-primary" style={{backgroundColor:"#FF5800",color:"white",width:"197px",height:"35px",borderRadius:"15px",marginTop:"10px"}}>קדימה</button>               
                 </div>
         </div>
 

@@ -6,6 +6,7 @@ import Messages from "./pages/messages";
 import PaymentStepOne from "./pages/paymentStepOne";
 import PaymentStepTwo from "./pages/paymentStepTwo";
 import PaymentStepThree from "./pages/paymentStepThree";
+import CarDetails from "./pages/carDetailsPage";
 function App() {
   return (
     <BrowserRouter>
@@ -18,6 +19,7 @@ function App() {
       <Route path="/paymentStepOne" element={<PaymentStepOne />}/>
       <Route path="/paymentStepTwo" element={<PaymentStepTwo/>}/>
       <Route path="/paymentStepThree" element={<PaymentStepThree/>}/>     
+      <Route path="/carDetails" element={<CarDetails/>}/>     
 
     </Routes>
     </BrowserRouter>

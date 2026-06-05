@@ -6,7 +6,13 @@ import carPayment from "../assets/images/cars/Group18692.png"
 import driver from "../assets/icons/Driver.png"
 import layerIcon from "../assets/icons/Layer.png"
 import Beats from "../assets/icons/Beats.png";
+import {useNavigate} from "react-router-dom"
 export default function PaymentStepOne(){
+    const navigate = useNavigate();
+    const handleLogin=(e)=>{
+        e.preventDefault();
+        navigate("/PaymentStepTwo")
+    }
     return(
             <div style={{backgroundImage: `url(${backGround})`,backgroundSize: "cover",backgroundPosition: "center",height: "890px",width: "360px",}}>
                 <div className="d-flex align-items-center flex-row justify-content-around" dir="rtl" style={{ backgroundColor: "#24292B", height: "70px" }}>
@@ -54,7 +60,7 @@ export default function PaymentStepOne(){
                             <h5 style={{color:"white"}}>₪96,000</h5>
                         </div>
                         <div dir="rtl" className="justify-content-evenly d-flex ">
-                            <button style={{color:"white",background:"#FF5800",borderRadius:"10px"}}>העברה בנקאית </button>
+                            <button onClick={handleLogin} style={{color:"white",background:"#FF5800",borderRadius:"10px"}}>העברה בנקאית </button>
                             <button style={{backgroundColor:"#24292B",color:"white",border:"2px solid #FF5800" ,borderRadius:"10px" }}>אפשרויות מימון</button>
                         </div>
                     </div>
