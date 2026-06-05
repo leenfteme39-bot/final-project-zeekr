@@ -5,7 +5,7 @@ import backIcon from "../assets/icons/iconX.png";
 import steps from "../assets/icons/steps.png";
 import uplIcon from "../assets/icons/uplIcon.png";
 import updIcon from "../assets/icons/icon8.png"
-export default function Contact() {
+export default function Enrollment() {
   const [city,setCity]=useState("");
   const [street,setStreet]=useState("");
   const [houseNumber,setHouseNumber]=useState("");

@@ -25,7 +25,7 @@ export default function PaymentStepOne(){
                          <h6 style={{color:"white"}}>עלות הזמנה
                             <span style={{fontSize:"10px" }}>(* כולל אגרת רישוי )</span>
                         </h6>
-                        <h5 style={{color:"white"}}>₪153,000 </h5>                           
+                        <h5 style={{color:"wshite"}}>₪153,000 </h5>                           
                         </div>
                         
                         <div className="d-flex justify-content-between" style={{padding:"10px"}} dir="rtl">
