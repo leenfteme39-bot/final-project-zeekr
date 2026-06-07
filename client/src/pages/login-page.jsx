@@ -1,5 +1,7 @@
 // ייבוא REACT
 // USESTATE הוא זכרון פנימי של הדף ומשתמשים בו כדי לשמור מה שהמשתמש מקליד
+import { signInWithEmailAndPassword } from "firebase/auth";
+import { auth } from "../firebase";
 import { useState } from "react";
 import carImage from "../assets/images/cars/Frame.png";
 import backGround from "../assets/hero/Vector.png";
@@ -22,11 +24,27 @@ export default function Login() {
   // אירוע של הטופס 
   // e.preventDefault אל תרענן את הדף כי ברירת מחדל של טופס הוא רענון ולא רוצים האפליקציה
   const navigate = useNavigate();  
-  const handleLogin = (e) => {
+  const handleLogin = async (e) => {
     e.preventDefault();
-  console.log([phone, carNumber]);
-  console.log(backGround);
-  navigate("/home")
+    try {
+        await signInAnonymously(auth);
+        const response = await fetch("http://localhost:5000/api/users", {
+        method:"POST",
+        headers:{
+          "Content-Type": "application/json",
+        },
+        body:JSON.stringify({
+          phone,
+          carNumber,
+        }),
+      })
+      const data = await response.json();
+      console.log("User saved",data);
+      navigate("/home");
+    }catch(error){
+      console.log(error);
+      alert("שגירה בהתחברות" )
+    }
 };
   return (
     <div style={{backgroundImage: `url(${backGround})`,backgroundSize: "cover",backgroundPosition: "center",minHeight: "100vh",width: "100%",margin:"0 auto",maxWidth:"1200px"}}>
