@@ -10,7 +10,48 @@ export default function Enrollment() {
   const [city,setCity]=useState("");
   const [street,setStreet]=useState("");
   const [houseNumber,setHouseNumber]=useState("");
+  const [formData, setFormData] = useState({
+    firstName:"",
+    lastName: "",
+    idNumber:"",
+    birthDate: "",
+    phone:"" ,
+    email:"",
+    city:"",
+    street:"",
+    houseNumber:"",
+  });
+  const handleChange =(e)=>{
+    setFormData({
+      formData,
+      [e.target.name]:e.target.value
+    })
+  }
+  const handleSubmit = async (e) =>{
+    e.preventDefault();
+    try{
+          const res = await fetch("http://localhost:5000/api/users", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(formData),
+    });
 
+    const data = await res.json();
+
+    if (!res.ok) {
+      alert(data.message);
+      return;
+    }
+     alert("נרשמת בהצלחה 🎉");
+    console.log(data.user);
+
+    navigate("/login");
+    } catch (error) {
+    console.log(error);
+  }
+};
   return (
     <div
       style={{backgroundImage: `url(${backGround})`,backgroundSize: "cover",backgroundPosition: "center",maxheight: "100%",width: "100%",margin:"0 auto"}}>
@@ -23,35 +64,35 @@ export default function Enrollment() {
       <h4 style={{ color: "white", fontSize: "15px", padding: "10px" }}className="d-flex justify-content-end ">
         כדאי לבדוק שוב שהפרטים נכונים
       </h4>
-      <form>
+      <form onSubmit={handleSubmit}>
         <div className="d-flex flex-column align-items-end p-2">
           <h6 style={{ color: "white" }}>שם פרטי</h6>
-          <input style={{backgroundColor: "#3A3E40",width: "100%",borderRadius: "8px",height: "30px",}}type="text"/>
+          <input style={{backgroundColor: "#3A3E40",width: "100%",borderRadius: "8px",height: "30px",}}type="text" value={formData.firstName} onChange={handleChange}/>
         </div>
         <div className="d-flex flex-column align-items-end p-2">
           <h6 style={{ color: "white" }}>שם משפחה</h6>
           <input
-            style={{backgroundColor: "#3A3E40",width: "100%",borderRadius: "8px",height: "30px",}}type="text"/>
+            style={{backgroundColor: "#3A3E40",width: "100%",borderRadius: "8px",height: "30px",}}type="text" value={formData.lastName} onChange={handleChange}/>
         </div>
         <div className="d-flex flex-column align-items-end p-2">
           <h6 style={{ color: "white" }}>תעודת זהות</h6>
-          <input style={{backgroundColor: "#3A3E40",width: "100%",borderRadius: "8px",height: "30px",}}type="text"/>
+          <input style={{backgroundColor: "#3A3E40",width: "100%",borderRadius: "8px",height: "30px",}}type="text" value={formData.idNumber} onChange={handleChange}/>
         </div>
         <div className="d-flex flex-column align-items-end p-2">
           <h6 style={{ color: "white" }}>תאריך לידה</h6>
-          <input style={{backgroundColor: "#3A3E40",width: "100%",borderRadius: "8px",height: "30px",color: "white",}}type="date"/>
+          <input style={{backgroundColor: "#3A3E40",width: "100%",borderRadius: "8px",height: "30px",color: "white",}}type="date" value={formData.birthDate} onChange={handleChange}/>
         </div>
         <div className="d-flex flex-column align-items-end p-2">
           <h6 style={{ color: "white" }}>מספר טלפון</h6>
           <input
-            style={{backgroundColor: "#3A3E40",width: "100%",borderRadius: "8px",height: "30px",}}type="tel"/>
+            style={{backgroundColor: "#3A3E40",width: "100%",borderRadius: "8px",height: "30px",}}type="tel" value={formData.idNumber} onChange={handleChange}/>
         </div>
         <div className="d-flex flex-column align-items-end p-2">
           <h6 style={{ color: "white" }}>כתובת מייל</h6>
           <div style={{ position: "relative", width: "100%" }}>
             <input
               type="email"
-              style={{backgroundColor: "#3A3E40",width: "100%",borderRadius: "8px",height: "30px",border: "none",outline: "none",color: "white",paddingRight: "10px",paddingLeft: "35px",}}/>
+              style={{backgroundColor: "#3A3E40",width: "100%",borderRadius: "8px",height: "30px",border: "none",outline: "none",color: "white",paddingRight: "10px",paddingLeft: "35px",}} value={formData.email} onChange={handleChange}/>
             <img src={updIcon} alt="" style={{position: "absolute",left: "10px",top: "50%",transform: "translateY(-50%)",width: "16px",height: "16px"}}/>
           </div>
         </div>
@@ -59,7 +100,7 @@ export default function Enrollment() {
           <h6 style={{ color: "white" }}>עיר מגורים</h6>
           <div
             style={{backgroundColor: "#3A3E40",width: "100%", borderRadius: "8px",height: "30px"}}>
-            <select style={{ backgroundColor: "#3A3E40", color: "white", width: "95%" }} dir="rtl" className="border-0">
+            <select style={{ backgroundColor: "#3A3E40", color: "white", width: "95%" }} dir="rtl" className="border-0" value={formData.city} onChange={handleChange}>
               <option value=""></option>
               <option value="באקה אלגרבייה">באקה אלגרבייה</option>
               <option value="תל אביב">תל אביב</option>
@@ -84,7 +125,7 @@ export default function Enrollment() {
                 color: "white",
                 paddingRight: "10px",
                 paddingLeft: "35px",
-              }}
+              }}value={formData.street} onChange={handleChange}
             />
             <img
               src={updIcon}
@@ -116,7 +157,7 @@ export default function Enrollment() {
                 color: "white",
                 paddingRight: "10px",
                 paddingLeft: "35px",
-              }}
+              }}value={formData.houseNumber} onChange={handleChange}
             />
             <img
               src={updIcon}

@@ -8,7 +8,6 @@ import backGround from "../assets/hero/Vector.png";
 import iconLayer from "../assets/icons/Layer.png";
 import { useNavigate } from "react-router-dom";
 
-// יצירת קומפוננטה
 export default function Login() {
   // יצירת משתנים ( לטופס)
   // PHONE שומר את מב' הטל ו
@@ -27,24 +26,29 @@ export default function Login() {
   const handleLogin = async (e) => {
     e.preventDefault();
     try {
-        await signInAnonymously(auth);
-        const response = await fetch("http://localhost:5000/api/users", {
-        method:"POST",
-        headers:{
-          "Content-Type": "application/json",
-        },
-        body:JSON.stringify({
-          phone,
-          carNumber,
-        }),
-      })
-      const data = await response.json();
-      console.log("User saved",data);
+    const response = await fetch("http://localhost:5000/api/users/login", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        phone,
+        carNumber,
+      }),
+    });
+
+    const data = await response.json();
+
+    if (response.ok) {
+      console.log("Login success:", data.user);
       navigate("/home");
-    }catch(error){
-      console.log(error);
-      alert("שגירה בהתחברות" )
+    } else {
+      console.log("User not found → go to enrollment");
+      navigate("/enrollment");
     }
+  } catch (error) {
+    console.log("Error:", error);
+  }
 };
   return (
     <div style={{backgroundImage: `url(${backGround})`,backgroundSize: "cover",backgroundPosition: "center",minHeight: "100vh",width: "100%",margin:"0 auto",maxWidth:"1200px"}}>

@@ -1,27 +1,25 @@
-//יצירת שרת 
 const express = require("express");
 const cors = require("cors");
 const dotenv = require("dotenv");
-// חיבור שרת 
-const vehicleRoutes = require("./routes/vehicleRoutes");
-console.log("vehicleRoutes =", vehicleRoutes);
 
 dotenv.config();
 
-const connectDB = require("./config/db");
-
 const app = express();
-const userRoutes = require("./routes/userRoutes");
-app.use("/api/users", userRoutes);
+
+// middleware 
 app.use(cors());
-//מאפשר קבלת ניתונים מהפרונט
 app.use(express.json());
 
-//חיבור ל מונגו DB
+// חיבור DB
+const connectDB = require("./config/db");
 connectDB();
 
-// שרת
+// routes
+const vehicleRoutes = require("./routes/vehicleRoutes");
+const userRoutes = require("./routes/userRoutes");
+
 app.use("/api/vehicles", vehicleRoutes);
+app.use("/api/users", userRoutes);
 
 app.get("/", (req, res) => {
   res.send("Zeeker Server is running ");
