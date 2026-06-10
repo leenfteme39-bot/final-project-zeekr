@@ -2,12 +2,12 @@
 
 ## Students
 - leen fteme
-- roman Petrushanski
 
 ## project Description 
 
 
 ##Technologies
+
 -React
 -Node.js
 -Express
