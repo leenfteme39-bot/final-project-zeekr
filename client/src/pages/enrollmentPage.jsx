@@ -5,51 +5,47 @@ import backIcon from "../assets/icons/iconX.png";
 import steps from "../assets/icons/steps.png";
 import uplIcon from "../assets/icons/uplIcon.png";
 import updIcon from "../assets/icons/icon8.png";
+import { useNavigate } from "react-router-dom";
 
 export default function Enrollment() {
-  const [city,setCity]=useState("");
-  const [street,setStreet]=useState("");
-  const [houseNumber,setHouseNumber]=useState("");
+  const navigate =useNavigate();
+  const phone = localStorage.getItem("userPhone");
+  const carNumber = localStorage.getItem("userCarNumber");
   const [formData, setFormData] = useState({
     firstName:"",
     lastName: "",
     idNumber:"",
     birthDate: "",
-    phone:"" ,
+    phone:phone||"" ,
     email:"",
     city:"",
     street:"",
     houseNumber:"",
+    carNumber:carNumber|| ""
   });
   const handleChange =(e)=>{
-    setFormData({
-      formData,
-      [e.target.name]:e.target.value
-    })
-  }
-  const handleSubmit = async (e) =>{
-    e.preventDefault();
-    try{
-          const res = await fetch("http://localhost:5000/api/users", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(formData),
-    });
+    const {name, value} = e.target;
+    setFormData((prev)=>({
+      ...prev,
+      [name]:value,
+    }));
+  };
+  const handleSubmit = async (e) => {
+  e.preventDefault();
 
-    const data = await res.json();
+  const res = await fetch("http://localhost:5000/api/users/update", {
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(formData),
+  });
 
-    if (!res.ok) {
-      alert(data.message);
-      return;
-    }
-     alert("נרשמת בהצלחה 🎉");
-    console.log(data.user);
+  const data = await res.json();
 
-    navigate("/login");
-    } catch (error) {
-    console.log(error);
+  if (res.ok) {
+    alert("נשמר בהצלחה");
+    navigate("/home");
   }
 };
   return (
@@ -67,32 +63,32 @@ export default function Enrollment() {
       <form onSubmit={handleSubmit}>
         <div className="d-flex flex-column align-items-end p-2">
           <h6 style={{ color: "white" }}>שם פרטי</h6>
-          <input style={{backgroundColor: "#3A3E40",width: "100%",borderRadius: "8px",height: "30px",}}type="text" value={formData.firstName} onChange={handleChange}/>
+          <input type="text" name="firstName" value={formData.firstName} onChange={handleChange} style={{backgroundColor: "#3A3E40",width: "100%",borderRadius: "8px",height: "30px",}}/>
         </div>
         <div className="d-flex flex-column align-items-end p-2">
           <h6 style={{ color: "white" }}>שם משפחה</h6>
           <input
-            style={{backgroundColor: "#3A3E40",width: "100%",borderRadius: "8px",height: "30px",}}type="text" value={formData.lastName} onChange={handleChange}/>
+            type="text" name="lastName" value={formData.lastName} onChange={handleChange} style={{backgroundColor: "#3A3E40",width: "100%",borderRadius: "8px",height: "30px",}}/>
         </div>
         <div className="d-flex flex-column align-items-end p-2">
           <h6 style={{ color: "white" }}>תעודת זהות</h6>
-          <input style={{backgroundColor: "#3A3E40",width: "100%",borderRadius: "8px",height: "30px",}}type="text" value={formData.idNumber} onChange={handleChange}/>
+          <input type="text" name="idNumber" value={formData.idNumber} onChange={handleChange} style={{backgroundColor: "#3A3E40",width: "100%",borderRadius: "8px",height: "30px",}}/>
         </div>
         <div className="d-flex flex-column align-items-end p-2">
           <h6 style={{ color: "white" }}>תאריך לידה</h6>
-          <input style={{backgroundColor: "#3A3E40",width: "100%",borderRadius: "8px",height: "30px",color: "white",}}type="date" value={formData.birthDate} onChange={handleChange}/>
+          <input type="date" name="birthDate" value={formData.birthDate} onChange={handleChange} style={{backgroundColor: "#3A3E40",width: "100%",borderRadius: "8px",height: "30px",color: "white",}}/>
         </div>
         <div className="d-flex flex-column align-items-end p-2">
           <h6 style={{ color: "white" }}>מספר טלפון</h6>
           <input
-            style={{backgroundColor: "#3A3E40",width: "100%",borderRadius: "8px",height: "30px",}}type="tel" value={formData.idNumber} onChange={handleChange}/>
+            type="tel" name="phone" value={formData.phone} onChange={handleChange} style={{backgroundColor: "#3A3E40",width: "100%",borderRadius: "8px",height: "30px",}}/>
         </div>
         <div className="d-flex flex-column align-items-end p-2">
           <h6 style={{ color: "white" }}>כתובת מייל</h6>
           <div style={{ position: "relative", width: "100%" }}>
             <input
-              type="email"
-              style={{backgroundColor: "#3A3E40",width: "100%",borderRadius: "8px",height: "30px",border: "none",outline: "none",color: "white",paddingRight: "10px",paddingLeft: "35px",}} value={formData.email} onChange={handleChange}/>
+              type="email" name="email" value={formData.email} onChange={handleChange}
+              style={{backgroundColor: "#3A3E40",width: "100%",borderRadius: "8px",height: "30px",border: "none",outline: "none",color: "white",paddingRight: "10px",paddingLeft: "35px",}} />
             <img src={updIcon} alt="" style={{position: "absolute",left: "10px",top: "50%",transform: "translateY(-50%)",width: "16px",height: "16px"}}/>
           </div>
         </div>
@@ -100,7 +96,7 @@ export default function Enrollment() {
           <h6 style={{ color: "white" }}>עיר מגורים</h6>
           <div
             style={{backgroundColor: "#3A3E40",width: "100%", borderRadius: "8px",height: "30px"}}>
-            <select style={{ backgroundColor: "#3A3E40", color: "white", width: "95%" }} dir="rtl" className="border-0" value={formData.city} onChange={handleChange}>
+            <select name="city" value={formData.city} onChange={handleChange} style={{ backgroundColor: "#3A3E40", color: "white", width: "95%" }} dir="rtl" className="border-0" >
               <option value=""></option>
               <option value="באקה אלגרבייה">באקה אלגרבייה</option>
               <option value="תל אביב">תל אביב</option>
@@ -114,7 +110,7 @@ export default function Enrollment() {
           <h6 style={{ color: "white" }}>רחוב</h6>
           <div style={{ position: "relative", width: "100%" }}>
             <input
-              type="email"
+              type="text" name="street" value={formData.street} onChange={handleChange}
               style={{
                 backgroundColor: "#3A3E40",
                 width: "100%",
@@ -125,7 +121,7 @@ export default function Enrollment() {
                 color: "white",
                 paddingRight: "10px",
                 paddingLeft: "35px",
-              }}value={formData.street} onChange={handleChange}
+              }}
             />
             <img
               src={updIcon}
@@ -145,8 +141,8 @@ export default function Enrollment() {
         <div className="d-flex flex-column align-items-end p-2">
           <h6 style={{ color: "white" }}>מספר בית</h6>
           <div style={{ position: "relative", width: "100%" }}>
-            <input
-              type="email"
+            <input 
+              type="text" name="houseNumber" value={formData.houseNumber} onChange={handleChange} 
               style={{
                 backgroundColor: "#3A3E40",
                 width: "100%",
@@ -157,7 +153,7 @@ export default function Enrollment() {
                 color: "white",
                 paddingRight: "10px",
                 paddingLeft: "35px",
-              }}value={formData.houseNumber} onChange={handleChange}
+              }}
             />
             <img
               src={updIcon}
@@ -175,7 +171,7 @@ export default function Enrollment() {
         </div>
 
         <div className="d-flex flex-column align-items-end text-end p-2">
-          <h5 style={{ color: "white", fontSize: "15px" }}>איך לעדכן פרטים</h5>
+          <p style={{ color: "white", fontSize: "15px" }}>איך לעדכן פרטים</p>
           <p style={{ color: "white" }}>
             מייל וכתובת ע"י לחיצה על העיפרון.
             <br />

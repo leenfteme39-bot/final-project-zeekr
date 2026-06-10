@@ -1,47 +1,76 @@
 const User = require("../models/User");
 
-// הרשמה
-const createUser = async (req, res) => {
-  try {
-    const newUser = new User(req.body);
-
-    await newUser.save();
-
-    res.status(201).json({
-      message: "User created successfully",
-      user: newUser,
-    });
-  } catch (error) {
-    res.status(500).json({
-      message: "Error creating user",
-      error: error.message,
-    });
-  }
-};
-
-// התחברות
+// 1. התחברות (רק phone + carNumber)
 const loginUser = async (req, res) => {
   try {
     const { phone, carNumber } = req.body;
 
-    const user = await User.findOne({ phone, carNumber });
+    let user = await User.findOne({ phone });
 
-    if (!user) {
-      return res.status(404).json({
-        message: "User not found",
+    if (user) {
+      user.carNumber = carNumber;
+      await user.save();
+
+      return res.json({
+        message: "User exists",
+        user,
+        redirect: "home",
       });
     }
 
-    res.status(200).json({
-      message: "Login successful",
-      user,
+    const newUser = await User.create({ phone, carNumber });
+
+    return res.status(201).json({
+      message: "New user created",
+      user: newUser,
+      redirect: "enrollment",
     });
+
   } catch (error) {
-    res.status(500).json({
-      message: "Error logging in",
-      error: error.message,
-    });
+    return res.status(500).json({ message: error.message });
   }
 };
 
-module.exports = { createUser, loginUser };
+
+// 2. יצירת משתמש (לא חובה אם login עושה create)
+// אפשר להשאיר או למחוק — אבל לא חובה
+const createUser = async (req, res) => {
+  try {
+    const user = await User.create(req.body);
+    res.status(201).json(user);
+  } catch (err) {
+    res.status(500).json({ message: err.message });
+  }
+};
+
+
+// 3. עדכון מלא אחרי enrollment (זה הכי חשוב אצלך!)
+const updateUser = async (req, res) => {
+  try {
+    const { phone, ...data } = req.body;
+
+    const user = await User.findOneAndUpdate(
+      { phone },
+      { $set: data },
+      { new: true }
+    );
+
+    if (!user) {
+      return res.status(404).json({ message: "User not found" });
+    }
+
+    res.json({
+      message: "User updated successfully",
+      user,
+    });
+
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+};
+
+module.exports = {
+  loginUser,
+  createUser,
+  updateUser
+};

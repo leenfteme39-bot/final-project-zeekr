@@ -1,7 +1,5 @@
 // ייבוא REACT
 // USESTATE הוא זכרון פנימי של הדף ומשתמשים בו כדי לשמור מה שהמשתמש מקליד
-import { signInWithEmailAndPassword } from "firebase/auth";
-import { auth } from "../firebase";
 import { useState } from "react";
 import carImage from "../assets/images/cars/Frame.png";
 import backGround from "../assets/hero/Vector.png";
@@ -36,20 +34,20 @@ export default function Login() {
         carNumber,
       }),
     });
-
     const data = await response.json();
 
-    if (response.ok) {
-      console.log("Login success:", data.user);
-      navigate("/home");
-    } else {
-      console.log("User not found → go to enrollment");
-      navigate("/enrollment");
+    if (data.redirect === "home") {
+    navigate("/home");
+  } else {
+    localStorage.setItem("userPhone" , phone);
+    localStorage.setItem("userCarNumber" , carNumber);
+    navigate("/enrollment");
+}
+    }catch (error){
+      console.log("Login error:",error);
     }
-  } catch (error) {
-    console.log("Error:", error);
-  }
-};
+  };
+
   return (
     <div style={{backgroundImage: `url(${backGround})`,backgroundSize: "cover",backgroundPosition: "center",minHeight: "100vh",width: "100%",margin:"0 auto",maxWidth:"1200px"}}>
       <img src={carImage} alt="carImag" style={{ height: "auto", width: "100%", objectFit: "cover" }}/>
@@ -103,3 +101,5 @@ export default function Login() {
     </div>
   );
 }
+localStorage.setItem("userPhone", phone);
+localStorage.setItem("userCarNumber", carNumber);
