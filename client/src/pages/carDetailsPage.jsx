@@ -17,7 +17,7 @@ import Car from "../assets/icons/13314Car.png";
 
 export default function CarDetails(){
     return(
-            <div style={{backgroundImage: `url(${backGround})`,backgroundSize: "cover",backgroundPosition: "center",minHeight: "190vh",width: "100%"}}>
+            <div style={{backgroundImage: `url(${backGround})`,backgroundSize: "cover",minHeight: "190vh",width: "100%"}}>
                 <div className="d-flex align-items-center flex-row justify-content-around"  style={{ backgroundColor: "#24292B", height: "70px"}}>                    
                     <img src={arrow} alt="" />
                     <div>
@@ -47,7 +47,7 @@ export default function CarDetails(){
                 </div>
                 <h2 style={{color:"white",alignItems:"center",transform:"translateY(20px)"}} >פרטי הרכב שלך </h2>
                 
-                <div className="d-flex flex-column gap-2 " style={{transform:"translateY(20px) translateX(-350px)"}}>
+                <div className="d-flex flex-column gap-2 " style={{transform:"translateY(20px) translateX(-230px)"}}>
                     <div className="d-flex flex-row gap-3" dir="rtl" style={{paddingRight:"50px"}}>
                         <div style={{backgroundColor:"#3A3E40",height:"100px",width:"150px",borderRadius:"10px",paddingTop:"10px"}} className="col-6">
                             <img src={road} alt="" />

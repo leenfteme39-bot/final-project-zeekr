@@ -49,7 +49,7 @@ export default function Login() {
   };
 
   return (
-    <div style={{backgroundImage: `url(${backGround})`,backgroundSize: "cover",backgroundPosition: "center",minHeight: "100vh",width: "100%",margin:"0 auto",maxWidth:"1200px"}}>
+    <div style={{backgroundImage: `url(${backGround})`,backgroundSize: "cover",backgroundPosition: "center",minHeight: "100vh",width: "100%",margin:"0 auto",maxWidth:"12200px"}}>
       <img src={carImage} alt="carImag" style={{ height: "auto", width: "100%", objectFit: "cover" }}/>
       <div className="d-flex justify-content-center align-items-center ">
         <form
@@ -101,5 +101,5 @@ export default function Login() {
     </div>
   );
 }
-localStorage.setItem("userPhone", phone);
-localStorage.setItem("userCarNumber", carNumber);
+// localStorage.setItem("userPhone", phone);
+// localStorage.setItem("userCarNumber", carNumber);

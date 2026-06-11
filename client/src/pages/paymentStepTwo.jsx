@@ -8,6 +8,8 @@ import closeIcon from "../assets/icons/closeIcon.png";
 import motorsbaam from "../assets/logos/motorsbaam.png";
 import step2 from "../assets/icons/steps2.png";
 import { useNavigate } from "react-router-dom";
+import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
+import { storage } from "../firebase";
 export default function PaymentStepTwo(){
     const navigate =useNavigate();
     const handleLogin=(e)=>{
