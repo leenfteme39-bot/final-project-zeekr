@@ -15,7 +15,9 @@ import Group399 from "../assets/logos/Group399.png";
 import { useNavigate } from "react-router-dom";
 
 export default function HomePage() {
-  const user =JSON.parse(localStorage.getItem("user"));
+  const user = JSON.parse(localStorage.getItem("user"));
+  const firstName = localStorage.getItem("userFirstName");
+  const carNumber = localStorage.getItem("userCarNumber");
   return (
     <div
       className="min-vh-100 w-100"
@@ -36,7 +38,7 @@ export default function HomePage() {
           <div className="d-flex justify-content-between align-items-center" dir="rtl">
             <div className="d-flex align-items-center gap-2">
               <img src="" alt="" style={{ width: "40px", height: "40px", borderRadius: "50%" }} />
-              <h6 className="text-white m-0">בוקר טוב {user?.firstName}
+              <h6 className="text-white m-0" style={{color:"white"}}>בוקר טוב {user?.firstName}
               </h6>
             </div>
 
@@ -64,8 +66,7 @@ export default function HomePage() {
             />
 
             <h5 className="text-white mt-3">ZEEKAR X</h5>
-            <h6 className="text-white">מס' רכב</h6>
-
+            <h6 className="text-white">מס' רכב: {user?.carNumber}</h6>
             <button
               type="button"
               className="btn mt-3"
@@ -81,7 +82,7 @@ export default function HomePage() {
           </div>
         </div>
 
-        <div className="d-flex flex-column align-items-center gap-4" style={{ paddingTop: "30px" }}>
+        <div className="d-flex flex-column align-items-center gap-4" style={{ paddingTop: "30px" ,padding:"50px" }}>
           <img src={frameIcon} alt="" style={{ width: "30px" }} />
           <h5 style={{ color: "white" }}>לשירותך</h5>
         </div>
@@ -113,10 +114,8 @@ export default function HomePage() {
         </div>
       </div>
 
-      {/* 🔥 CTA FIXED בצורה נכונה */}
       <div dir="rtl" className="d-flex flex-column align-items-center mt-4">
 
-        {/* CTA ICON - עכשיו יציב */}
         <div className="d-flex justify-content-center" style={{ width: "100%" }}>
           <img
             src={ctaIcon}
@@ -129,7 +128,6 @@ export default function HomePage() {
           />
         </div>
 
-        {/* FOOTER BAR */}
         <div
           className="d-flex justify-content-between px-3 align-items-center"
           style={{

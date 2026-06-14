@@ -6,11 +6,11 @@ dotenv.config();
 
 const app = express();
 
-// middleware 
+// middleware
 app.use(cors());
 app.use(express.json());
 
-// חיבור DB
+// DB
 const connectDB = require("./config/db");
 connectDB();
 
@@ -22,7 +22,7 @@ app.use("/api/vehicles", vehicleRoutes);
 app.use("/api/users", userRoutes);
 
 app.get("/", (req, res) => {
-  res.send("Zeeker Server is running ");
+  res.send("Zeeker Server is running");
 });
 
 const PORT = process.env.PORT || 5000;

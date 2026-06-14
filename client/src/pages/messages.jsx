@@ -35,7 +35,6 @@ export default function Messages() {
         alt=""
         style={{
           width: "100%",
-          maxWidth: "360px",
           height: "auto",
         }}
       />
@@ -63,7 +62,7 @@ export default function Messages() {
           marginBottom: "30px",
           backgroundColor: "#FF5800",
           color: "white",
-          width: "177px",
+          width: "auto",
           height: "40px",
           borderRadius: "33px",
           fontWeight: "bold",

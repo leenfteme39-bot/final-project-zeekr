@@ -23,24 +23,26 @@ export default function Login() {
   const navigate = useNavigate();  
   const handleLogin = async (e) => {
     e.preventDefault();
+    console.log("SEND LOGIN REQUEST");
     try {
     const response = await fetch("http://localhost:5000/api/users/login", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-      },
+      },  
       body: JSON.stringify({
         phone,
         carNumber,
       }),
     });
+    console.log("FETCH SENT");
     const data = await response.json();
-
+    if (data.user) {
+    localStorage.setItem("user", JSON.stringify(data.user));
+}
     if (data.redirect === "home") {
     navigate("/home");
   } else {
-    localStorage.setItem("userPhone" , phone);
-    localStorage.setItem("userCarNumber" , carNumber);
     navigate("/enrollment");
 }
     }catch (error){
@@ -101,5 +103,3 @@ export default function Login() {
     </div>
   );
 }
-// localStorage.setItem("userPhone", phone);
-// localStorage.setItem("userCarNumber", carNumber);

@@ -20,7 +20,6 @@ export default function PaymentStepThree() {
         justifyContent: "center",
       }}
     >
-      {/* INNER CONTAINER */}
       <div
         style={{
           width: "100%",
@@ -30,7 +29,6 @@ export default function PaymentStepThree() {
           flexDirection: "column",
         }}
       >
-        {/* HEADER */}
         <div
           className="d-flex align-items-center justify-content-around"
           dir="rtl"
@@ -44,7 +42,6 @@ export default function PaymentStepThree() {
           <img src={backIcon} alt="" style={{ width: "40px", height: "40px" }} />
         </div>
 
-        {/* STEP IMAGE */}
         <div style={{ textAlign: "center", marginTop: "10px" }}>
           <img src={step3} alt="" style={{ width: "80%", maxWidth: "350px" }} />
         </div>
@@ -53,13 +50,11 @@ export default function PaymentStepThree() {
           מעקב אחרי בקשת המימון
         </h4>
 
-        {/* TIMELINE + CARDS */}
         <div
           className="d-flex"
           dir="rtl"
           style={{ gap: "20px", padding: "20px" }}
         >
-          {/* LEFT LINE */}
           <div
             style={{
               display: "flex",
@@ -92,7 +87,6 @@ export default function PaymentStepThree() {
             </div>
           </div>
 
-          {/* RIGHT CARDS */}
           <div
             style={{
               display: "flex",
@@ -102,7 +96,6 @@ export default function PaymentStepThree() {
               padding: "0 10px",
             }}
           >
-            {/* CARD 1 */}
             <div
               style={{
                 backgroundColor: "#24292B",
@@ -119,7 +112,6 @@ export default function PaymentStepThree() {
               </p>
             </div>
 
-            {/* CARD 2 */}
             <div
               style={{
                 backgroundColor: "#24292B",
@@ -136,7 +128,6 @@ export default function PaymentStepThree() {
               </p>
             </div>
 
-            {/* CARD 3 */}
             <div
               style={{
                 backgroundColor: "#24292B",
@@ -169,7 +160,6 @@ export default function PaymentStepThree() {
               </div>
             </div>
 
-            {/* CARD 4 */}
             <div
               style={{
                 backgroundColor: "#24292B",
@@ -203,7 +193,6 @@ export default function PaymentStepThree() {
           </div>
         </div>
 
-        {/* BUTTON */}
         <div style={{ textAlign: "center", padding: "20px" }}>
           <button
             style={{

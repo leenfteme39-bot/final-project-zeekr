@@ -1,4 +1,3 @@
-// כתובת , אם למשל יש לי כתובת /api/vehicles  , getAllVehicles השרת מפעיל 
 
 const express = require("express");
 
