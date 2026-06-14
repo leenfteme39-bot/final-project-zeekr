@@ -4,7 +4,6 @@ const User = require("../models/User");
 const loginUser = async (req, res) => {
   try {
     const { phone, carNumber } = req.body;
-
     let user = await User.findOne({ phone });
 
     if (user) {
