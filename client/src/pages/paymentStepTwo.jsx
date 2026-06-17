@@ -10,16 +10,52 @@ import step2 from "../assets/icons/steps2.png";
 import { useNavigate } from "react-router-dom";
 import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
 import { storage } from "../firebase";
-export default function PaymentStepTwo(){
-    const navigate =useNavigate();
-    const handleLogin=(e)=>{
-        e.preventDefault();
-        navigate("/paymentStepThree")
-    };
-    const [file, setFile] = useState(null);
-    const handleFileChange = (e) => {
+
+export default function PaymentStepTwo() {
+  const navigate = useNavigate();
+  const [file, setFile] = useState(null);
+
+  const handleFileChange = (e) => {
     setFile(e.target.files[0]);
-    };
+  };
+
+  const uploadFile = async () => {
+    if (!file) return null;
+
+    const fileRef = ref(storage, `documents/${file.name}`);
+
+    await uploadBytes(fileRef, file);
+
+    const url = await getDownloadURL(fileRef);
+
+    console.log("🔥 FILE URL:", url);
+
+    return url;
+  };
+
+  const handleLogin = async (e) => {
+    e.preventDefault();
+    try {
+      const url = await uploadFile();
+      if (!url) {
+        alert("יש לבחור קובץ לפני המשך");
+        return;
+      }
+    await fetch("http://localhost:5000/api/users/update", {
+        method: "PUT",
+        headers: {
+            "Content-Type": "application/json",
+        },
+    body: JSON.stringify({
+        phone: localStorage.getItem("userPhone"),
+        documentUrl: url,
+        }),
+    });
+      navigate("/paymentStepThree");
+    } catch (err) {
+      alert("שגיאה בהעלאת הקובץ");
+    }
+  };
     return(
         <div style={{backgroundImage: `url(${backGround})`,backgroundSize: "cover",backgroundPosition: "center" ,minHeight:"100vh",width:"100%"}}>
             <div className="d-flex align-items-center flex-row justify-content-around" dir="rtl" style={{ backgroundColor: "#24292B", height: "70px" }}>

@@ -15,6 +15,8 @@ const sendWelcomeEmail = async (email) => {
     subject: "הרשמה בוצעה בהצלחה 🎉",
     text: "ברוכים הבאים! ההרשמה שלך הושלמה בהצלחה.",
   });
+
+  console.log("📧 EMAIL SENT");
 };
 
 module.exports = { sendWelcomeEmail };

@@ -38,7 +38,8 @@ export default function Login() {
     console.log("FETCH SENT");
     const data = await response.json();
     if (data.user) {
-    localStorage.setItem("user", JSON.stringify(data.user));
+    localStorage.setItem("userPhone",data.user.phone);
+    localStorage.setItem("userCarNumber",data.user.carNumber);
 }
     if (data.redirect === "home") {
     navigate("/home");

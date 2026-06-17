@@ -31,13 +31,14 @@ const loginUser = async (req, res) => {
 };
 
 
-
 const createUser = async (req, res) => {
   try {
     const user = await User.create(req.body);
-
     if (user.email) {
+      console.log("📧 EMAIL EXISTS → SENDING EMAIL");
       await sendWelcomeEmail(user.email);
+    } else {
+      console.log("❌ NO EMAIL FOUND");
     }
 
     res.status(201).json({
@@ -50,12 +51,15 @@ const createUser = async (req, res) => {
   }
 };
 
+
 const updateUser = async (req, res) => {
   try {
     const { phone, ...data } = req.body;
-
+    if (!phone) {
+      return res.status(400).json({ message: "Phone is required" });
+    }
     const user = await User.findOneAndUpdate(
-      { phone },
+      { phone: phone },
       { $set: data },
       { new: true }
     );
@@ -64,13 +68,13 @@ const updateUser = async (req, res) => {
       return res.status(404).json({ message: "User not found" });
     }
 
-    res.json({
+    return res.json({
       message: "User updated successfully",
       user,
     });
 
   } catch (error) {
-    res.status(500).json({ message: error.message });
+    return res.status(500).json({ message: error.message });
   }
 };
 

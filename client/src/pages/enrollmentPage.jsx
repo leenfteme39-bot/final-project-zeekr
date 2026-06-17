@@ -37,14 +37,18 @@ export default function Enrollment() {
     headers: {
       "Content-Type": "application/json",
     },
-    body: JSON.stringify(formData),
-  });
+    body: JSON.stringify({
+    ...formData,
+    phone: localStorage.getItem("userPhone")
+})  });
 
   const data = await res.json();
-
+  console.log("UPDATE RESPONSE:", data);
   if (res.ok) {
     alert("נשמר בהצלחה");
     navigate("/home");
+  }else{
+    alert("שגיאה בשמירה")
   }
 };
   return (
