@@ -6,7 +6,6 @@ import steps from "../assets/icons/steps.png";
 import uplIcon from "../assets/icons/uplIcon.png";
 import updIcon from "../assets/icons/icon8.png";
 import { useNavigate } from "react-router-dom";
-
 export default function Enrollment() {
   const navigate =useNavigate();
   const phone = localStorage.getItem("userPhone");

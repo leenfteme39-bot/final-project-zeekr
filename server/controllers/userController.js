@@ -1,6 +1,6 @@
 const User = require("../models/User");
+const { sendWelcomeEmail } = require("../services/email");
 
-// 1. התחברות (רק phone + carNumber)
 const loginUser = async (req, res) => {
   try {
     const { phone, carNumber } = req.body;
@@ -31,19 +31,25 @@ const loginUser = async (req, res) => {
 };
 
 
-// 2. יצירת משתמש (לא חובה אם login עושה create)
-// אפשר להשאיר או למחוק — אבל לא חובה
+
 const createUser = async (req, res) => {
   try {
     const user = await User.create(req.body);
-    res.status(201).json(user);
+
+    if (user.email) {
+      await sendWelcomeEmail(user.email);
+    }
+
+    res.status(201).json({
+      message: "User created successfully",
+      user,
+    });
+
   } catch (err) {
     res.status(500).json({ message: err.message });
   }
 };
 
-
-// 3. עדכון מלא אחרי enrollment (זה הכי חשוב אצלך!)
 const updateUser = async (req, res) => {
   try {
     const { phone, ...data } = req.body;

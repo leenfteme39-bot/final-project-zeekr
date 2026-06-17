@@ -6,8 +6,12 @@ import ElipseTimeline from "../assets/icons/ElipseTimeline.png";
 import Driver from "../assets/icons/Driver.png";
 import uplIcon from "../assets/icons/uplIcon.png";
 import Icons11 from "../assets/icons/Icons11.png";
-
+import {useState} from "react";
 export default function PaymentStepThree() {
+  const [file, setFile] =useState(null);
+  const handleFileChange = (e) => {
+  setFile(e.target.files[0]);
+  };
   return (
     <div
       style={{
@@ -175,20 +179,30 @@ export default function PaymentStepThree() {
                 כאן מעלים את טופס השיעבוד החתום.
               </p>
 
-              <div
-                className="d-flex justify-content-center align-items-center gap-3"
-                style={{
-                  height: "50px",
-                  width: "100%",
-                  border: "2px solid #FF5800",
-                  borderRadius: "20px",
-                }}
-              >
-                <img src={uplIcon} alt="" />
-                <h3 style={{ color: "white", fontSize: "16px" }}>
-                  מסמך אישור מימון
-                </h3>
-              </div>
+<label
+  style={{
+    height: "50px",
+    width: "100%",
+    border: "2px solid #FF5800",
+    borderRadius: "20px",
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+    gap: "10px",
+    cursor: "pointer",
+  }}
+>
+  <img src={uplIcon} alt="" />
+  <h3 style={{ color: "white", fontSize: "16px", margin: 0 }}>
+    {file ? file.name : "מסמך אישור מימון"}
+  </h3>
+
+  <input
+    type="file"
+    style={{ display: "none" }}
+    onChange={handleFileChange}
+  />
+</label>
             </div>
           </div>
         </div>

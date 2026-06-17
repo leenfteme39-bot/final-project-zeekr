@@ -21,7 +21,7 @@ export default function PaymentStepTwo(){
     setFile(e.target.files[0]);
     };
     return(
-        <div style={{backgroundImage: `url(${backGround})`,backgroundSize: "cover",backgroundPosition: "center"}}>
+        <div style={{backgroundImage: `url(${backGround})`,backgroundSize: "cover",backgroundPosition: "center" ,minHeight:"100vh",width:"100%"}}>
             <div className="d-flex align-items-center flex-row justify-content-around" dir="rtl" style={{ backgroundColor: "#24292B", height: "70px" }}>
                 <img src={iconX} alt="" style={{ width: "40px", height: "40px" }} />
                 <h3 style={{ color: "white" }}>ביצוע תשלום</h3>
