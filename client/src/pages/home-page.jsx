@@ -13,6 +13,7 @@ import icon3 from "../assets/logos/icons3.png";
 import icon4 from "../assets/logos/icons4.png";
 import Group399 from "../assets/logos/Group399.png";
 import { useNavigate } from "react-router-dom";
+import personalhedar from "../assets/icons/personalhedar.png";
 
 export default function HomePage() {
   const user = JSON.parse(localStorage.getItem("user"));
@@ -37,7 +38,7 @@ export default function HomePage() {
         <div className="container py-4">
           <div className="d-flex justify-content-between align-items-center" dir="rtl">
             <div className="d-flex align-items-center gap-2">
-              <img src="" alt="" style={{ width: "40px", height: "40px", borderRadius: "50%" }} />
+              <img src={personalhedar} alt="" style={{ width: "40px", height: "40px", borderRadius: "50%" }} />
               <h6 className="text-white m-0" style={{color:"white"}}>בוקר טוב {user?.firstName}
               </h6>
             </div>
