@@ -7,6 +7,8 @@ import PaymentStepOne from "./pages/paymentStepOne";
 import PaymentStepTwo from "./pages/paymentStepTwo";
 import PaymentStepThree from "./pages/paymentStepThree";
 import CarDetails from "./pages/carDetailsPage";
+import Map from "./pages/map";
+import UploadDocuments from "./pages/uploadDocuments";
 function App() {
   return (
     <BrowserRouter>
@@ -20,6 +22,8 @@ function App() {
       <Route path="/paymentStepTwo" element={<PaymentStepTwo/>}/>
       <Route path="/paymentStepThree" element={<PaymentStepThree/>}/>     
       <Route path="/carDetails" element={<CarDetails/>}/>     
+      <Route path="/map" element={<Map/>}/>     
+      <Route path="/uploadDocuments" element={<UploadDocuments/>}/>     
 
     </Routes>
     </BrowserRouter>
