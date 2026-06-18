@@ -45,7 +45,7 @@ const userSchema = new mongoose.Schema({
   },
 
   licenseImage: {
-    type: String, // URL מ-Firebase בהמשך
+    type: String, 
   },
 
   createdAt: {

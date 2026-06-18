@@ -1,4 +1,3 @@
-// הגדרת מבנה הניתונים ב MONGODB 
 
 const mongoose = require("mongoose");
 
